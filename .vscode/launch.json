@@ -1,15 +1,94 @@
 {
-    // Use IntelliSense para saber los atributos posibles.
-    // Mantenga el puntero para ver las descripciones de los existentes atributos.
-    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    // Abre la carpeta DAW en VS Code y selecciona el HTML o PHP antes de iniciar.
+    // HTML: F5 depura JavaScript; Ctrl+F5 abre la página sin depurar.
+    // PHP: elige "Ejecutar" o "Depurar" y pulsa F5.
+    // PHP requiere la extensión xdebug.php-debug y usa el PHP de UniServer.
+    // Para los puntos de interrupción de PHP, instala Xdebug 3 para PHP 8.3 TS x64
+    // y cárgalo en Entorno_Servidor/UniServerZ/core/php83/php-cli.ini mediante
+    // zend_extension="C:/ruta/absoluta/php_xdebug.dll" (sustituye por la DLL real).
+    // Instrucciones: https://xdebug.org/docs/install#windows
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "HTML: archivo activo en Chrome",
             "type": "chrome",
             "request": "launch",
-            "name": "Iniciar Chrome para localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
+            "file": "${file}",
+            "webRoot": "${fileDirname}"
+        },
+        {
+            // Sirve la carpeta del archivo activo y abre ese PHP, con cualquier nombre.
+            "name": "PHP: Ejecutar archivo activo en navegador",
+            "type": "php",
+            "request": "launch",
+            "noDebug": true,
+            "runtimeExecutable": "${workspaceFolder}/Entorno_Servidor/UniServerZ/core/php83/php.exe",
+            "program": "",
+            "cwd": "${fileDirname}",
+            "runtimeArgs": [
+                "-dextension_dir=${workspaceFolder}/Entorno_Servidor/UniServerZ/core/php83/extensions",
+                "-S",
+                "127.0.0.1:0",
+                "-t",
+                "${fileDirname}"
+            ],
+            "env": {
+                "XDEBUG_MODE": "off"
+            },
+            "serverReadyAction": {
+                "pattern": "Development Server \\(http://127\\.0\\.0\\.1:([0-9]+)\\) started",
+                "uriFormat": "http://127.0.0.1:%s/${fileBasename}",
+                "action": "openExternally"
+            }
+        },
+        {
+            // Depura PHP en el servidor y JavaScript en Chrome. Puertos automáticos.
+            "name": "PHP: Depurar archivo activo en navegador",
+            "type": "php",
+            "request": "launch",
+            "runtimeExecutable": "${workspaceFolder}/Entorno_Servidor/UniServerZ/core/php83/php.exe",
+            "program": "",
+            "cwd": "${fileDirname}",
+            "port": 0,
+            "hostname": "127.0.0.1",
+            "runtimeArgs": [
+                "-dextension_dir=${workspaceFolder}/Entorno_Servidor/UniServerZ/core/php83/extensions",
+                "-dxdebug.start_with_request=yes",
+                "-S",
+                "127.0.0.1:0",
+                "-t",
+                "${fileDirname}"
+            ],
+            "env": {
+                "XDEBUG_MODE": "debug,develop",
+                "XDEBUG_CONFIG": "client_host=127.0.0.1 client_port=${port}"
+            },
+            "serverReadyAction": {
+                "pattern": "Development Server \\(http://127\\.0\\.0\\.1:([0-9]+)\\) started",
+                "uriFormat": "http://127.0.0.1:%s/${fileBasename}",
+                "action": "debugWithChrome",
+                "webRoot": "${fileDirname}",
+                "killOnServerStop": true
+            }
+        },
+        {
+            // Para scripts PHP de consola; muestra la salida en la consola de depuración.
+            "name": "PHP: Depurar archivo activo en consola",
+            "type": "php",
+            "request": "launch",
+            "runtimeExecutable": "${workspaceFolder}/Entorno_Servidor/UniServerZ/core/php83/php.exe",
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "port": 0,
+            "hostname": "127.0.0.1",
+            "runtimeArgs": [
+                "-dextension_dir=${workspaceFolder}/Entorno_Servidor/UniServerZ/core/php83/extensions",
+                "-dxdebug.start_with_request=yes"
+            ],
+            "env": {
+                "XDEBUG_MODE": "debug,develop",
+                "XDEBUG_CONFIG": "client_host=127.0.0.1 client_port=${port}"
+            }
         }
     ]
 }
