@@ -1,7 +1,7 @@
 <?php
 /************************************************
- * 6.-Muestra en pantalla la suma de los números 
- * del 1 al 100 no terminados en 3.
+  6.-Muestra en pantalla la suma de los números 
+  del 1 al 100 no terminados en 3.
  ***********************************************/
 
 $suma = 0;
