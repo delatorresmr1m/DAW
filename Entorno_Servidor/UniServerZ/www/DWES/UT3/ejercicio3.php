@@ -5,7 +5,7 @@
 Determinar si es capicúa.
 **********************************************************************/
 
-$numero = 121;
+$numero = 12221;
 $restante = $numero;
 $invertido = 0;
 
