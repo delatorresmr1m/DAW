@@ -86,5 +86,83 @@ if ($esIdentidad) {
 
 
 //Sumar los elementos de sus filas y almacenarlos en un array unidimensional. Visualiza el array obtenido.
+$sumaFilas = array();
+
+for ($i = 0; $i < count($matriz); $i++) {
+
+    $sumaFilas[$i] = 0;
+
+    for ($j = 0; $j < count($matriz[$i]); $j++) {
+
+        $sumaFilas[$i] += $matriz[$i][$j];
+
+    }
+
+}
+
+echo "Suma de las filas: ";
+
+foreach ($sumaFilas as $suma) {
+
+    echo $suma . " ";
+
+}
+
+echo "<br>";
+
+
+
+//Sumar los elementos de sus columnas y almacenarlos en otro array unidimensional. Visualiza el array obtenido.
+$sumaColumnas = array();
+
+for ($j = 0; $j < count($matriz[0]); $j++) {
+
+    $sumaColumnas[$j] = 0;
+
+    for ($i = 0; $i < count($matriz); $i++) {
+
+        $sumaColumnas[$j] += $matriz[$i][$j];
+
+    }
+
+}
+
+echo "Suma de las columnas: ";
+
+foreach ($sumaColumnas as $suma) {
+
+    echo $suma . " ";
+
+}
+
+echo "<br>";
+
+
+
+//Buscar un valor entero en el array bidimensional e indicar su posición o si no se encuentra.
+$numeroBuscado = 4;
+$encontrado = false;
+
+for ($i = 0; $i < count($matriz); $i++) {
+
+    for ($j = 0; $j < count($matriz[$i]); $j++) {
+
+        if ($matriz[$i][$j] == $numeroBuscado) {
+
+            $encontrado = true;
+            echo "El valor " . $numeroBuscado . " se encuentra en la fila " . $i . " y la columna " . $j . ".<br>";
+            break 2;
+
+        }
+
+    }
+
+}
+
+if (!$encontrado) {
+
+    echo "El valor " . $numeroBuscado . " no se encuentra en la matriz.<br>";
+
+}
 
 ?>
