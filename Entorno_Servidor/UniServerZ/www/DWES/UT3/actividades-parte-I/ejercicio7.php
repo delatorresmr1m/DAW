@@ -26,7 +26,10 @@ $matriz = array(
 
 
 //Visualizarla
-//OPCIÓN A
+//OPCIÓN A (bucle for)
+
+echo "<b>BUCLE for <br></b>";
+
 for ($i = 0; $i < count($matriz); $i++) {
 
     for ($j = 0; $j < count($matriz[$i]); $j++) {
@@ -35,11 +38,14 @@ for ($i = 0; $i < count($matriz); $i++) {
 
     }
 
-    echo "<br>";
+    echo "<br><br>";
 
 }
 
-//OPCIÓN B
+//OPCIÓN B (bucle foreach)
+
+echo "<b>BUCLE foreach <br></b>";
+
 foreach ($matriz as $fila) {
 
     foreach ($fila as $componente) {
@@ -48,13 +54,16 @@ foreach ($matriz as $fila) {
 
     }
 
-    echo "<br>";
+    echo "<br><br>";
 
 }
 
 
 
 //Comprueba que es identidad. Indica el resultado de la comprobación con un mensaje.
+
+echo "<b>Comprobar que es identidad <br></b>";
+
 $esIdentidad = true;
 
 for ($i = 0; $i < count($matriz); $i++) {
@@ -75,17 +84,20 @@ for ($i = 0; $i < count($matriz); $i++) {
 
 if ($esIdentidad) {
 
-    echo "La matriz es identidad.<br>";
+    echo "La matriz es identidad.<br><br>";
 
 } else {
 
-    echo "La matriz no es identidad.<br>";
+    echo "La matriz no es identidad.<br><br>";
 
 }
 
 
 
 //Sumar los elementos de sus filas y almacenarlos en un array unidimensional. Visualiza el array obtenido.
+
+echo "<b>Sumar los elementos de las filas <br></b>";
+
 $sumaFilas = array();
 
 for ($i = 0; $i < count($matriz); $i++) {
@@ -108,11 +120,14 @@ foreach ($sumaFilas as $suma) {
 
 }
 
-echo "<br>";
+echo "<br><br>";
 
 
 
 //Sumar los elementos de sus columnas y almacenarlos en otro array unidimensional. Visualiza el array obtenido.
+
+echo "<b>Sumar los elementos de las columnas <br></b>";
+
 $sumaColumnas = array();
 
 for ($j = 0; $j < count($matriz[0]); $j++) {
@@ -135,11 +150,14 @@ foreach ($sumaColumnas as $suma) {
 
 }
 
-echo "<br>";
+echo "<br><br>";
 
 
 
 //Buscar un valor entero en el array bidimensional e indicar su posición o si no se encuentra.
+
+echo "<b>Busar valor entero e indicar su posición <br></b>";
+
 $numeroBuscado = 4;
 $encontrado = false;
 
@@ -150,7 +168,7 @@ for ($i = 0; $i < count($matriz); $i++) {
         if ($matriz[$i][$j] == $numeroBuscado) {
 
             $encontrado = true;
-            echo "El valor " . $numeroBuscado . " se encuentra en la fila " . $i . " y la columna " . $j . ".<br>";
+            echo "El valor " . $numeroBuscado . " se encuentra en la fila " . $i . " y la columna " . $j . ".<br><br>";
             break 2;
 
         }
@@ -161,7 +179,7 @@ for ($i = 0; $i < count($matriz); $i++) {
 
 if (!$encontrado) {
 
-    echo "El valor " . $numeroBuscado . " no se encuentra en la matriz.<br>";
+    echo "El valor " . $numeroBuscado . " no se encuentra en la matriz.<br><br>";
 
 }
 
